@@ -37,7 +37,7 @@ func percentageFuture (a student) chan int {
 
 func percentage (a student)int{
 	var percentage int
-	percentage=(a.subject1marks+a.subject2marks+a.subject3marks)/3
+	percentage=(a.subject1marks+a.subject2marks+a.subject3marks)*100/300
 	return percentage
 }
 
