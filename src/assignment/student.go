@@ -6,9 +6,9 @@ import(
 type student struct{
 	name string
 	age int
-	subject1marks int
-	subject2marks int
-	subject3marks int
+	subject1marks float64
+	subject2marks float64
+	subject3marks float64
 }
 
 func main(){
@@ -23,40 +23,42 @@ func main(){
 	
 }
 
-func computePercentage (a student)  int {
+func computePercentage (a student)  float64 {
     percentageChan := percentageFuture(a)
     percentage := <-percentageChan
     return percentage
 }
 
-func percentageFuture (a student) chan int {
-    future := make (chan int)
+func percentageFuture (a student) chan float64 {
+    future := make (chan float64)
     go func () { future <- percentage(a)  }()
     return future;
 }
 
-func percentage (a student)int{
-	var percentage int
+func percentage (a student)float64{
+	var percentage float64
 	percentage=(a.subject1marks+a.subject2marks+a.subject3marks)*100/300
 	return percentage
 }
 
 
-func computeAverage (a student,b student)  int {
+func computeAverage (a student,b student)  float64 {
     averageChan := averageFuture(a,b)
     average := <-averageChan
     return average
 }
 
-func averageFuture (a student,b student) chan int {
-    future := make (chan int)
+func averageFuture (a student,b student) chan float64 {
+    future := make (chan float64)
     go func () { future <- average(a,b)  }()
     return future;
 }
 
-func average (a student,b student)int{
+func average (a student,b student)float64{
 	averageA:=(a.subject1marks+a.subject2marks+a.subject3marks)/3
 	averageB:=(b.subject1marks+b.subject2marks+b.subject3marks)/3
 	return (averageA+averageB)/2
 }
+
+
 
